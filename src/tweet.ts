@@ -44,7 +44,7 @@ export const sendRaffleTweet = async (raffle: any) => {
       raffle.winnerCount
     } winners\n⏰ Ends ${getDateDifference(
       raffle
-    )}\n\nTo enter and get more details, click below 👇 https://alphabot.app/${
+    )}\n\nTo get premium, visit https://www.alphabot.app/#premium-user\n\nTo enter this raffle & get more details, click below 👇 https://alphabot.app/${
       raffle.slug
     }`
   );
