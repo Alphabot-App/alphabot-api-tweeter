@@ -38,14 +38,14 @@ export const sendRaffleTweet = async (raffle: any) => {
     .replace('https://twitter.com/', '@');
 
   await client.v2.tweet(
-    `New #Alphabot ${raffle.type} posted${
+    `New #Alphabot Premium ${raffle.type} posted${
       handle ? ` with ${handle}` : ''
     }\n\n✨ ${raffle.name} ✨\n\n🏆 ${
       raffle.winnerCount
     } winners\n⏰ Ends ${getDateDifference(
       raffle
-    )}\n\nTo get premium, visit https://www.alphabot.app/#premium-user\n\nTo enter this raffle & get more details, click below 👇 https://alphabot.app/${
-      raffle.slug
-    }`
+    )}\n\nTo get Alphabot Premium, visit https://www.alphabot.app/#premium-user\n\nTo enter this ${
+      raffle.type
+    } & get more details, click below 👇 https://alphabot.app/${raffle.slug}`
   );
 };
