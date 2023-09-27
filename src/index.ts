@@ -27,8 +27,12 @@ app.post('/', async (req, res) => {
     // Invalid hash! Do not trust this request!
     console.warn(
       'Invalid hash found! Request IP address:',
-      req.socket.remoteAddress
+      req.socket.remoteAddress,
+      hashToCheck,
+      req.body.hash
     );
+
+    console.warn(JSON.stringify(req.body));
     return;
   }
 
