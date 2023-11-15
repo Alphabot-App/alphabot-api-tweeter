@@ -1,11 +1,12 @@
 import { config } from 'dotenv-flow';
-import fetch, { Headers } from 'node-fetch';
+// import fetch, { Headers } from 'node-fetch';
 import { sendRaffleTweet } from './tweet.js';
 
 config();
 
 const go = async () => {
-  const slug = 'forge-10x-wl-nzgfqo';
+  const slug =
+    'birthmark-tiki-calendar-15x-guaranteed-and-75x-allowlist-gielpn';
   const raffleResp = await fetch(
     `https://api.alphabot.app/v1/raffles/${slug}`,
     {

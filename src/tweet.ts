@@ -45,9 +45,9 @@ export const sendRaffleTweet = async (raffle: any) => {
         raffle.winnerCount
       } winners\n⏰ Ends ${getDateDifference(
         raffle
-      )}\n\nTo get Alphabot Premium, visit https://www.alphabot.app/#premium-user\n\nTo enter this ${
+      )}\n\nTo get Alphabot Premium, visit https://www.alphabot.app/#premium-user\n\nEnter this ${
         raffle.type
-      } & get more details, click below 👇 https://alphabot.app/${raffle.slug}`
+      } & more, click below 👇 https://alphabot.app/${raffle.slug}`
     );
   } catch (e: any) {
     // Don't crash if twitter API throws error
