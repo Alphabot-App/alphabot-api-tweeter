@@ -13,6 +13,8 @@ const PORT = process.env.PORT || 8080;
 
 const TEAM_ID = process.env.ALPHABOT_TEAM_ID;
 
+const TWEETED_SLUGS: string[] = [];
+
 app.post('/', async (req, res) => {
   // Always respond 200
   res.status(200).send(undefined);
@@ -40,6 +42,11 @@ app.post('/', async (req, res) => {
     case 'raffle:active': {
       const { raffle } = req.body.data;
 
+      if (TWEETED_SLUGS.includes(raffle.slug)) {
+        console.log(`Raffle already tweeted`, raffle.slug);
+        return;
+      }
+
       if (
         (!TEAM_ID || raffle.teamId === TEAM_ID) &&
         raffle.visibility !== 'private'
@@ -49,6 +56,12 @@ app.post('/', async (req, res) => {
           raffle.slug
         );
         await sendRaffleTweet(raffle);
+
+        if (TWEETED_SLUGS.length > 100) {
+          TWEETED_SLUGS.shift();
+        }
+
+        TWEETED_SLUGS.push(raffle.slug);
       }
       break;
     }
