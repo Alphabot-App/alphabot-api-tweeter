@@ -5,7 +5,7 @@ import { sendRaffleTweet } from './tweet.js';
 config();
 
 const go = async () => {
-  const slugs = ['final-bosu-4x-wl-o9e29v', 'groopys-world-35x-wl-alik0j'];
+  const slugs = ['calymia-5x-wl-s5lonl'];
 
   for (const slug of slugs) {
     const raffleResp = await fetch(
@@ -14,7 +14,7 @@ const go = async () => {
         headers: new Headers({
           authorization: `Bearer ${process.env.ALPHABOT_API_KEY}`,
         }),
-      }
+      },
     );
 
     const json = (await raffleResp.json()) as any;

@@ -33,9 +33,11 @@ export const sendRaffleTweet = async (raffle: any) => {
     accessSecret: process.env.TWITTER_ACCESS_TOKEN_SECRET,
   });
 
-  const handle = raffle.twitterUrl
-    .split('?')[0]
-    .replace('https://twitter.com/', '@');
+  const tagHandle = process.env.NO_HANDLE_TAG !== 'true';
+
+  const handle = !tagHandle
+    ? ''
+    : raffle.twitterUrl.split('?')[0].replace('https://twitter.com/', '@');
 
   try {
     await client.v2.tweet(
@@ -44,10 +46,10 @@ export const sendRaffleTweet = async (raffle: any) => {
       }\n\n✨ ${raffle.name} ✨\n\n🏆 ${
         raffle.winnerCount
       } winners\n⏰ Ends ${getDateDifference(
-        raffle
+        raffle,
       )}\n\nTo get Alphabot Premium, visit https://www.alphabot.app/#premium-user\n\nEnter this ${
         raffle.type
-      } & more, click below 👇 https://alphabot.app/${raffle.slug}`
+      } & more, click below 👇 https://alphabot.app/${raffle.slug}`,
     );
   } catch (e: any) {
     // Don't crash if twitter API throws error
